@@ -1,6 +1,6 @@
 # ROS Package for Interactive Cleanup
 
-This project is ROS package for the competition of Interactive Cleanup.
+This project is ROS package for the Interactive Cleanup task of the Partner Robot Challenge (Virtual Space) in the World Robot Competition.
 
 ## Prerequisites
 
