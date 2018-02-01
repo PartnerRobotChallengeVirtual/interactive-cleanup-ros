@@ -2,6 +2,9 @@
 
 This project is ROS package for the Interactive Cleanup task of the Partner Robot Challenge (Virtual Space) in the World Robot Competition.
 
+See also [wiki page](https://github.com/PartnerRobotChallengeVirtual/interactive-cleanup-ros/wiki).
+
+
 ## Prerequisites
 
 - OS: Ubuntu 16.04
