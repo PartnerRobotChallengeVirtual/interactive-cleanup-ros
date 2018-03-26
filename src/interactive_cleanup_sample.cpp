@@ -33,6 +33,7 @@ private:
   const std::string MSG_MISSION_COMPLETE = "Mission_complete";
 
   const std::string MSG_I_AM_READY      = "I_am_ready";
+  const std::string MSG_OBJECT_GRASPED  = "Object_grasped";
   const std::string MSG_TASK_FINISHED   = "Task_finished";
 
   trajectory_msgs::JointTrajectory arm_joint_trajectory_;
@@ -349,6 +350,7 @@ public:
         {
           if(ros::Time::now() - waiting_start_time > ros::Duration(3, 0))
           {
+            sendMessage(pub_msg, MSG_OBJECT_GRASPED);
             step_++;
           }
 
