@@ -45,7 +45,10 @@ private:
 
   const std::string ARM_LIFT_JOINT_NAME = "arm_lift_joint";
 
-  const std::string MSG_ARE_YOU_READY  = "Are_you_ready?";
+  const std::string MSG_ARE_YOU_READY    = "Are_you_ready?";
+  const std::string MSG_TASK_SUCCEEDED   = "Task_succeeded";
+  const std::string MSG_TASK_FAILED      = "Task_failed";
+  const std::string MSG_MISSION_COMPLETE = "Mission_complete";
 
   const std::string MSG_I_AM_READY      = "I_am_ready";
   const std::string MSG_IS_THIS_CORRECT = "Is_this_correct?";
@@ -112,9 +115,11 @@ void InteractiveCleanupTeleopKey::messageCallback(const interactive_cleanup::Int
 
   ROS_INFO("Subscribe message:%s, %s", message->message.c_str(), message->detail.c_str());
 
-  if(message->message.c_str()==MSG_ARE_YOU_READY)
+  if(message->message.c_str()==MSG_ARE_YOU_READY){ is_received_are_you_ready_ = true; }
+
+  if(message->message.c_str()==MSG_TASK_SUCCEEDED || message->message.c_str()==MSG_TASK_FAILED || message->message.c_str()==MSG_MISSION_COMPLETE)
   {
-    is_received_are_you_ready_ = true;
+    is_received_are_you_ready_ = false;
   }
 }
 
