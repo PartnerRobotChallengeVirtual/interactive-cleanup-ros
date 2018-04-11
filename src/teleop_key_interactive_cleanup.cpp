@@ -14,6 +14,7 @@ private:
   static const char KEYCODE_0 = 0x30;
   static const char KEYCODE_1 = 0x31;
   static const char KEYCODE_2 = 0x32;
+  static const char KEYCODE_6 = 0x36;
   static const char KEYCODE_9 = 0x39;
 
   static const char KEYCODE_UP    = 0x41;
@@ -51,9 +52,10 @@ private:
   const std::string MSG_MISSION_COMPLETE = "Mission_complete";
 
   const std::string MSG_I_AM_READY      = "I_am_ready";
-  const std::string MSG_IS_THIS_CORRECT = "Is_this_correct?";
   const std::string MSG_OBJECT_GRASPED  = "Object_grasped";
   const std::string MSG_TASK_FINISHED   = "Task_finished";
+  const std::string MSG_IS_THIS_CORRECT = "Is_this_correct?";
+  const std::string MSG_GIVE_UP         = "Give_up";
 
 public:
   InteractiveCleanupTeleopKey();
@@ -246,7 +248,8 @@ void InteractiveCleanupTeleopKey::showHelp()
   puts(("0 : Send "+MSG_I_AM_READY).c_str());
   puts(("1 : Send "+MSG_OBJECT_GRASPED).c_str());
   puts(("2 : Send "+MSG_TASK_FINISHED).c_str());
-  puts(("9 : Send "+MSG_IS_THIS_CORRECT).c_str());
+  puts(("6 : Send "+MSG_IS_THIS_CORRECT).c_str());
+  puts(("9 : Send "+MSG_GIVE_UP).c_str());
 }
 
 int InteractiveCleanupTeleopKey::run(int argc, char **argv)
@@ -342,9 +345,14 @@ int InteractiveCleanupTeleopKey::run(int argc, char **argv)
           sendMessage(pub_msg, MSG_TASK_FINISHED);
           break;
         }
-        case KEYCODE_9:
+        case KEYCODE_6:
         {
           sendMessage(pub_msg, MSG_IS_THIS_CORRECT);
+          break;
+        }
+        case KEYCODE_9:
+        {
+          sendMessage(pub_msg, MSG_GIVE_UP);
           break;
         }
         case KEYCODE_UP:
